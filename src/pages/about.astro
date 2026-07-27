@@ -3,24 +3,50 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="關於" description="Tommy Lin 的簡介">
-  <h1>關於我</h1>
+  <div class="intro">
+    <img class="avatar" src="/avatar.gif" alt="Tommy Lin" width="88" height="88" />
+    <div>
+      <h1>Tommy Lin</h1>
+      <p class="dim">
+        Founding Engineer @ AvocadoAI · NTUST 資工所碩士生 · 資安 / 機器學習 / 惡意程式偵測
+      </p>
+    </div>
+  </div>
+
   <p>
-    我是 Tommy，國立臺灣科技大學（NTUST）資訊工程系碩士生。研究方向圍繞在資訊安全與機器學習的交會處，主要興趣包括：
-  </p>
-  <ul>
-    <li>惡意程式與二進位檔分析（malware / binary analysis）</li>
-    <li>跨架構（cross-architecture）表徵學習與對比學習</li>
-    <li>圖神經網路（GNN）在安全問題上的應用</li>
-    <li>DevSecOps 與資安工程實務</li>
-  </ul>
-  <p>
-    這個網誌主要用來記錄研究過程中的筆記、工具測試心得，以及一些零散的技術紀錄。
-  </p>
-  <p>
-    可以在
+    <a href="mailto:yuchlin00@gmail.com">Email</a>
+    ·
     <a href="https://github.com/YuCheng1122" target="_blank" rel="noopener noreferrer">GitHub</a>
-    看到我的程式碼與專案，或在
+    ·
     <a href="https://www.linkedin.com/in/yucheng-lin-202937235/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    上找到我。
   </p>
+
+  <h2>經歷</h2>
+  <ul>
+    <li>Founding Engineer, AvocadoAI（2023.09 – 現在）</li>
+    <li>Visiting Research Student, NICT（2025.01 – 2025.04）</li>
+    <li>Software Engineer Intern, Wistron NeWeb Corp.（2024.05 – 2024.12）</li>
+  </ul>
+
+  <h2>學歷</h2>
+  <ul>
+    <li>國立臺灣科技大學（NTUST）資訊工程系碩士生（2024.09 – 2026.08）</li>
+    <li>國立臺北科技大學（NTUT）資訊與財金管理系學士</li>
+  </ul>
+
+  <h2>論文</h2>
+  <ul>
+    <li>
+      "Domain Adaptation for Cross-Architecture IoT Malware Detection under Data Scarcity," IEEE Conf. on Privacy, Security and Trust (PST), 2026.
+    </li>
+    <li>
+      "Cross-architecture IoT malware analysis using P-Code intermediate representation," Workshop on Recent Advances in Resilient and Trustworthy MAchine learning-driveN systems, 2025.
+    </li>
+  </ul>
+
+  <h2>獲獎</h2>
+  <ul>
+    <li>CISC 2026 Best Presentation</li>
+    <li>AI FinTech Association 全國賽 2023 — 冠軍</li>
+  </ul>
 </Layout>
