@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import { useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const t = useTranslations('zh');
+const t = useTranslations('en');
 
-const posts = (await getCollection('blog', ({ id, data }) => id.startsWith('zh/') && !data.draft)).sort(
+const posts = (await getCollection('blog', ({ id, data }) => id.startsWith('en/') && !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const recent = posts.slice(0, 5);
@@ -26,13 +26,13 @@ const recent = posts.slice(0, 5);
         {recent.map((post) => (
           <li>
             <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString('zh-TW')}
+              {post.data.pubDate.toLocaleDateString('en-US')}
             </time>
-            <a href={`/blog/${post.id.slice('zh/'.length)}/`}>{post.data.title}</a>
+            <a href={`/en/blog/${post.id.slice('en/'.length)}/`}>{post.data.title}</a>
           </li>
         ))}
       </ul>
     )
   }
-  <p><a href="/blog/">{t('home.viewAll')}</a></p>
+  <p><a href="/en/blog/">{t('home.viewAll')}</a></p>
 </Layout>

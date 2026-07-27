@@ -1,0 +1,31 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const t = useTranslations('en');
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ id, data }) => id.startsWith('en/') && !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id.slice('en/'.length) },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const slug = post.id.slice('en/'.length);
+const zhCounterpart = await getEntry('blog', `zh/${slug}`);
+const langSwitchHref = zhCounterpart ? `/blog/${slug}/` : null;
+---
+
+<Layout title={post.data.title} description={post.data.description} langSwitchHref={langSwitchHref}>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p class="dim">{post.data.pubDate.toLocaleDateString('en-US')}</p>
+    <Content />
+  </article>
+  <p><a href="/en/blog/">{t('blog.back')}</a></p>
+</Layout>
