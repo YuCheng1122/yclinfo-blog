@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    name: 'Embedding Vector Generation based on Function Call Graph',
+    url: 'https://github.com/YuCheng1122/Embedding-vector-generation-based-on-function-call-graph-',
+    desc: '從函式呼叫圖（function call graph）產生二進位檔的嵌入向量，用於後續的相似度比對或分類任務。',
+  },
+  {
+    name: 'Malware Detection for IoT with FCG',
+    url: 'https://github.com/YuCheng1122/Malware-detection-for-IoT-with-fcg',
+    desc: '以函式呼叫圖為特徵，針對 IoT 裝置上的惡意程式進行偵測。',
+  },
+  {
+    name: 'Cross-Architecture Contrastive Learning',
+    url: 'https://github.com/YuCheng1122/Cross-Architecture-Contrastive-Learning',
+    desc: '用對比學習（contrastive learning）處理跨指令集架構的二進位檔表徵問題。',
+  },
+  {
+    name: 'PcodeBERT',
+    url: 'https://github.com/YuCheng1122/PcodeBERT',
+    desc: '以 BERT 架構學習反組譯後的 P-code 中間表示法，探索其在逆向工程分析上的應用。',
+  },
+  {
+    name: 'GNN',
+    url: 'https://github.com/YuCheng1122/GNN',
+    desc: '圖神經網路的研究與實驗記錄。',
+  },
+  {
+    name: 'Federated Learning',
+    url: 'https://github.com/YuCheng1122/Federated-Learning',
+    desc: '聯邦學習相關的實作與實驗。',
+  },
+];
+---
+
+<Layout title="專案" description="Tommy Lin 的專案與研究">
+  <h1>專案</h1>
+  <p class="dim">
+    以下是幾個研究與實作專案，多數圍繞在資安與機器學習的交叉領域。完整清單請見
+    <a href="https://github.com/YuCheng1122" target="_blank" rel="noopener noreferrer">GitHub</a>。
+  </p>
+  <ul class="post-list">
+    {
+      projects.map((p) => (
+        <li>
+          <a href={p.url} target="_blank" rel="noopener noreferrer">
+            {p.name}
+          </a>
+          <p class="dim">{p.desc}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

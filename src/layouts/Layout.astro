@@ -1,0 +1,209 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Tommy Lin 的個人網誌' } = Astro.props;
+const pageTitle = title === 'Tommy Lin' ? title : `${title} · Tommy Lin`;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="/">Tommy Lin</a>
+        <nav>
+          <a href="/">首頁</a>
+          <a href="/blog/">文章</a>
+          <a href="/projects/">專案</a>
+          <a href="/about/">關於</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <p>
+          <a href="https://github.com/YuCheng1122" target="_blank" rel="noopener noreferrer">GitHub</a>
+          ·
+          <a href="https://www.linkedin.com/in/yucheng-lin-202937235/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+        <p class="dim">&copy; {new Date().getFullYear()} Tommy Lin</p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --fg: #1a1a1a;
+    --bg: #ffffff;
+    --dim: #6b6b6b;
+    --line: #e5e5e5;
+    --link: #1a1a1a;
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #e8e8e8;
+      --bg: #121212;
+      --dim: #9a9a9a;
+      --line: #2c2c2c;
+      --link: #e8e8e8;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+      sans-serif;
+    line-height: 1.7;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.1rem;
+  }
+
+  nav a {
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    color: var(--fg);
+  }
+
+  main {
+    flex: 1;
+  }
+
+  a {
+    color: var(--link);
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  p {
+    margin: 0.9rem 0;
+  }
+
+  code {
+    background: var(--line);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background: var(--line);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .dim {
+    color: var(--dim);
+    font-size: 0.9rem;
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    margin: 0.3rem 0;
+  }
+
+  ul.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.post-list li {
+    margin-bottom: 1.4rem;
+  }
+
+  ul.post-list a {
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  ul.post-list a:hover {
+    text-decoration: underline;
+  }
+
+  ul.post-list time {
+    display: block;
+    color: var(--dim);
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+  }
+</style>
