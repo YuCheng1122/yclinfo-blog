@@ -31,7 +31,13 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={post.data.title} description={post.data.description} langSwitchHref={langSwitchHref} pubDate={post.data.pubDate}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  langSwitchHref={langSwitchHref}
+  pubDate={post.data.pubDate}
+  ogImagePath={`/og/${post.id}.png`}
+>
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   <article>
     <h1>{post.data.title}</h1>

@@ -10,7 +10,7 @@ const posts = (await getCollection('blog', ({ id, data }) => id.startsWith('en/'
 );
 ---
 
-<Layout title={t('blog.title')} langSwitchHref="/blog/">
+<Layout title={t('blog.title')} langSwitchHref="/blog/" ogImagePath="/og/en/blog.png">
   <h1>{t('blog.title')}</h1>
   {
     posts.length === 0 ? (
