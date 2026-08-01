@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yclinfo.com/sitemap-index.xml

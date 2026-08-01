@@ -19,9 +19,20 @@ const { Content } = await render(post);
 const slug = post.id.slice('en/'.length);
 const zhCounterpart = await getEntry('blog', `zh/${slug}`);
 const langSwitchHref = zhCounterpart ? `/blog/${slug}/` : null;
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  url: `https://yclinfo.com/en/blog/${slug}/`,
+  author: { '@type': 'Person', name: 'Tommy Lin' },
+};
 ---
 
-<Layout title={post.data.title} description={post.data.description} langSwitchHref={langSwitchHref}>
+<Layout title={post.data.title} description={post.data.description} langSwitchHref={langSwitchHref} pubDate={post.data.pubDate}>
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   <article>
     <h1>{post.data.title}</h1>
     <p class="dim">{post.data.pubDate.toLocaleDateString('en-US')}</p>

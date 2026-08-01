@@ -9,9 +9,18 @@ const posts = (await getCollection('blog', ({ id, data }) => id.startsWith('en/'
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const recent = posts.slice(0, 5);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Tommy Lin',
+  url: 'https://yclinfo.com/en/',
+  sameAs: ['https://github.com/YuCheng1122', 'https://www.linkedin.com/in/yucheng-lin-202937235/'],
+};
 ---
 
 <Layout title="Tommy Lin">
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <div class="intro">
     <img class="avatar" src="/avatar.gif" alt="Tommy Lin" width="72" height="72" />
     <h1>Tommy Lin</h1>
